@@ -5,8 +5,8 @@ using UnityEngine;
 public class SpeedBooster : MonoBehaviour
 {
     public float SpeedMultiplyer;
-    GameObject Ball;
-    Rigidbody rb;
+    public GameObject Ball;
+    public Rigidbody rb;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -14,7 +14,7 @@ public class SpeedBooster : MonoBehaviour
         {
             Ball = other.gameObject;
             rb = Ball.GetComponent<Rigidbody>();
-            rb.AddForce(rb.velocity * SpeedMultiplyer);
+            rb.AddForce(rb.velocity * SpeedMultiplyer, ForceMode.VelocityChange);
         }
     }
 
