@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class SpeedBooster : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public float SpeedMultiplyer;
+    GameObject Ball;
+    Rigidbody rb;
+
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (other.gameObject.CompareTag("Ball"))
+        {
+            Ball = other.gameObject;
+            rb = Ball.GetComponent<Rigidbody>();
+            rb.AddForce(rb.velocity * SpeedMultiplyer);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }
